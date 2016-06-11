@@ -77,29 +77,22 @@ public class Utils {
       QuoteProvider.Quotes.CONTENT_URI);
     try {
       String change = jsonObject.getString("Change");
-      if (isResponseNull(change)){
-        return builder.build();
-      }
-      builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString("symbol"));
-
-      builder.withValue(QuoteColumns.BIDPRICE, truncateBidPrice(jsonObject.getString("Bid")));
-      builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
+      if(!change.equals("null")) {
+        builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString("symbol"));
+        builder.withValue(QuoteColumns.BIDPRICE, truncateBidPrice(jsonObject.getString("Bid")));
+        builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
           jsonObject.getString("ChangeinPercent"), true));
-      builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
-      builder.withValue(QuoteColumns.ISCURRENT, 1);
-      if (change.charAt(0) == '-'){
-        builder.withValue(QuoteColumns.ISUP, 0);
-      }else{
-        builder.withValue(QuoteColumns.ISUP, 1);
+        builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
+        builder.withValue(QuoteColumns.ISCURRENT, 1);
+        if (change.charAt(0) == '-') {
+          builder.withValue(QuoteColumns.ISUP, 0);
+        } else {
+          builder.withValue(QuoteColumns.ISUP, 1);
+        }
       }
-
     } catch (JSONException e){
       e.printStackTrace();
     }
     return builder.build();
-  }
-
-  private static boolean isResponseNull(String change){
-    return change.equals("null");
   }
 }

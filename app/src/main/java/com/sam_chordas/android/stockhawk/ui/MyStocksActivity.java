@@ -53,6 +53,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   private Cursor mCursor;
   boolean isConnected;
 
+  public static final String STOCK_POSITION = "stockPosition";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -85,7 +87,9 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             new RecyclerViewItemClickListener.OnItemClickListener() {
               @Override public void onItemClick(View v, int position) {
                 //TODO:
-                // do something on item click
+                Intent intent = new Intent(MyStocksActivity.this, ViewStockActivity.class);
+                intent.putExtra(STOCK_POSITION, mCursorAdapter.getSymbol(position));
+                startActivity(intent);
               }
             }));
     recyclerView.setAdapter(mCursorAdapter);

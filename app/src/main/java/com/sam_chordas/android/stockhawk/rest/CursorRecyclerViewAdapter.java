@@ -39,6 +39,11 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
     return 0;
   }
 
+  public String getSymbol(int position){
+    mCursor.moveToPosition(position);
+     return mCursor.getString(mCursor.getColumnIndex("symbol"));
+  }
+
   @Override public long getItemId(int position) {
     if (dataIsValid && mCursor != null && mCursor.moveToPosition(position)){
       return mCursor.getLong(rowIdColumn);

@@ -35,7 +35,7 @@ import com.google.android.gms.gcm.Task;
 import com.melnykov.fab.FloatingActionButton;
 import com.sam_chordas.android.stockhawk.touch_helper.SimpleItemTouchHelperCallback;
 
-public class MyStocksActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MyStocksActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
   /**
    * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -86,7 +86,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(this,
             new RecyclerViewItemClickListener.OnItemClickListener() {
               @Override public void onItemClick(View v, int position) {
-                //TODO:
                 Intent intent = new Intent(MyStocksActivity.this, ViewStockActivity.class);
                 intent.putExtra(STOCK_POSITION, mCursorAdapter.getSymbol(position));
                 startActivity(intent);

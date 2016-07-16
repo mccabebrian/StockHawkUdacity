@@ -109,7 +109,6 @@ public class StockTaskService extends GcmTaskService{
     String urlString;
     String getResponse;
     int result = GcmNetworkManager.RESULT_FAILURE;
-
     if (urlStringBuilder != null){
       urlString = urlStringBuilder.toString();
       try{

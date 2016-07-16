@@ -45,5 +45,8 @@ public class QuoteProvider {
     public static Uri withSymbol(String symbol){
       return buildUri(Path.QUOTES, symbol);
     }
+    public static Uri getAll(){
+       return buildUri(Path.QUOTES);
+    }
   }
 }

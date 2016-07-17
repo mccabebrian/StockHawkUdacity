@@ -13,4 +13,6 @@
   <string name="title_activity_view_stock">ViewStockActivity</string>
   <string name="home_screen_add_stock_button">Add stocks</string>
   <string name="stock_history">Add stocks</string>
+  <string name="stock_alread_exists_error">This stock is already saved!</string>
+
 </resources>
